@@ -20,14 +20,8 @@
 			<?php endwhile; ?>
 			
 	       </div><!-- /.posts -->
-	      
-	      <ul class="pagination">
-	        <li><a href="#">Prev</a></li>
-	        <li class="active"><a href="#">1</a></li>
-	        <li><a href="#">2</a></li>
-	        <li><a href="#">3</a></li>
-	        <li><a href="#">Next</a></li>
-	      </ul><!-- /.pagination --> 
+	       
+	       <?php Roots\Sage\Extras\sage_paging_nav(); ?><!-- /.pagination --> 
 	      
 	    </div><!-- /.col -->
 	  </div><!-- /.row -->
