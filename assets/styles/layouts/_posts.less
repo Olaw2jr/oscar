@@ -58,59 +58,43 @@ blockquote:before {
 	padding-right: 80px;
 	margin-bottom: 25px;
 }
-.meta li {
-	display: inline-block;
-	margin: 0 6px;
+.post-meta{
+    padding:0;
+    margin-bottom:20px;
 }
-.meta li.categories:before,
-.meta li a:before {
-	content: "";
-	font-family: "fontello";
-	margin-right: 6px;
+
+.post-title a,
+.post-meta a{
+    color: inherit;
+    -webkit-transition: color .2s ease-out;
+    transition: color .2s ease-out;
 }
-.meta li.categories a:before,
-.meta li.categories:before {
-	margin-right: 0;
+
+.post-title a:hover,
+.post-meta a:hover{
+    color: #F75443;
+    text-decoration: none;
 }
-/*.meta li.categories:before {
-	content: "\e70d";
-	-webkit-transition: all 200ms ease-out;
-	   -moz-transition: all 200ms ease-out;
-		 -o-transition: all 200ms ease-out;
-			transition: all 200ms ease-out;
-}*/
-.meta li.categories:hover:before {
-	color: #1ABB9C;
-	cursor: pointer;
+
+.post-meta li{
+    display:inline;
+    list-style: none;
+    color:#999;
 }
-.meta li.url a:before {
-	content: "\f30e";
+
+.post-meta li:after{
+    content:'|';
+    margin:0 5px;
 }
-.meta li.author-posts a:before {
-	content: "\27a6";
+
+.post-meta li:last-child:after{
+    content:'';
 }
-.meta li.comments a:before {
-	content: "\e718";
+
+.post-meta .fa{
+    margin-right: 5px;
 }
-.meta li.comments a:after {
-	content: "Comments";
-	margin-left: 4px;
-}
-.meta li.likes a:before {
-	content: "\2665";
-}
-.meta li.likes a:after {
-	content: "Likes";
-	margin-left: 4px;
-}
-.meta li:after {
-	/*content: "\0399";*/
-	content: "|";
-    margin-left: 12px;
-}
-.meta li:last-child:after {
-	content: "";
-}
+
 .classic-blog .sidemeta,
 .classic-blog .pagination {
 	padding-left: 59px;
@@ -178,7 +162,7 @@ blockquote:before {
 	background: #FFF;
     padding-bottom: 60px;
 	border: 1px solid #E6E9ED;
-	border-bottom-width: 2px;
+	border-bottom-width: 1px;
 	border-radius: 3px;
 	margin-bottom: 40px;
 }

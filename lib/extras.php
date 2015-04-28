@@ -36,7 +36,7 @@ add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
   * Display meta information for a specific post.
   */
 function sage_post_meta() {
-  echo '<ul class="meta">';
+  echo '<ul class="post-meta small">';
 
   if ( get_post_type() === 'post' ) {
     // If the post is sticky, mark it.
@@ -47,24 +47,24 @@ function sage_post_meta() {
     // The categories. 
     $category_list = get_the_category_list( ', ' );
     if ( $category_list ) {
-      echo '<li class="categories">' . $category_list . ' </li>';
+      echo '<li><i class="fa fa-folder-open-o"></i> ' . $category_list . ' </li>';
     }
 
     // Comments link.
     if ( comments_open() ) :
-      echo '<li class="comments">';
+      echo '<li><i class="fa fa-comments-o"></i>';
       comments_popup_link( __( 'Leave a comment', 'sage' ), __( 'One comment', 'sage' ), __( '% comments', 'sage' ) );
       echo '</li>';
     endif;
 
     //getPostLikeLink();
-    echo '<li class="likes"><a href="#">84 Likes</a></li>';
+    echo '<li><i class="fa fa-heart-o"></i><a href="#">84 Likes</a></li>';
 
     // Edit link.
     if ( is_user_logged_in() ) {
       echo '<li class="">';
       edit_post_link( __( 'Edit', 'sage' ), '<span class="meta-edit">', '</span>' );
-      echo '</li>';
+      echo '</li></ul>';
     }
   }
 }
