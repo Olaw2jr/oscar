@@ -1,0 +1,101 @@
+/*-----------------------
+---- Services Styles ----
+-------------------------*/
+
+.service-item{
+	margin:30px 0;
+	padding:0 45px;
+	text-align: center;
+}
+
+.service-item:nth-child(2){
+	border-left: 1px solid #eee;
+	border-right: 1px solid #eee;
+}
+
+.service-item .service-icon{
+	display: block;
+	margin:0 auto 30px;
+	width:180px;
+	height:180px;
+	border:1px solid #ddd;
+	color:#89949C;
+	border-radius: 50%;
+	overflow: hidden;
+	-webkit-transition: all .2s ease-in;
+	transition: all .2s ease-in;
+}
+
+.service-item .fa{
+	font-size: 82px;
+	line-height: 180px;
+	-webkit-transition: all .3s ease-in;
+	transition: all .3s ease-in;
+}
+
+.service-item:hover .fa{
+	font-size: 112px;
+	-webkit-transform:rotate(-15deg);
+	transform:rotate(-30deg);
+}
+
+.service-item:hover .service-icon{
+	color:#00CCCB;
+	border-color:transparent;
+}
+
+.service-item h3{
+	font-size: 21px;
+	font-weight: 400;
+	color:#39444C;
+}
+
+.btn-group{
+	margin-bottom: 80px;
+}
+
+.btn-group .btn{
+	padding:7px 60px;
+	font-size: 16px;
+	background: none;
+	border-color:#b9c4cC;
+	color:#858a95;
+	-webkit-transition: all .2s ease-out;
+	transition: all .2s ease-out;
+}
+
+.btn-group .btn:hover{
+	color:#39444C;
+}
+
+.btn-group .btn.active{
+	color:#00CCCB;
+	background:#fff;
+	box-shadow: none;
+}
+
+.btn-group .btn:first-child{
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+
+.btn-group .btn:last-child{
+	border-top-right-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+
+.tab-content{
+	opacity:1;
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+	-webkit-transition:all .3s ease-out;
+	transition:all .3s ease-out;
+}
+
+.tab-content.fadeOut{
+	opacity:0;
+	-webkit-transform: translateY(30px);
+	transform: translateY(30px);
+	-webkit-transition:none;
+	transition:none;
+}

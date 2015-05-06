@@ -1,4 +1,233 @@
-img{
-	width: 100%;
-	height: auto;
+/*--------------------
+-----Main Styles------
+----------------------*/
+body,html{
+    height:100%;
+}
+
+body{
+    background:#000;
+}
+
+#home{
+    display: table;
+    height: 100%;
+    width:100%;
+}
+
+body{
+    font-family: Roboto, Arial, sans-serif;
+    font-size:16px;
+    color:#313131;
+    font-weight:300;
+    overflow-x:hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+    font-family: 'Raleway', sans-serif;
+    font-weight:300;
+    letter-spacing:0.02em;
+    margin:0 0 20px;
+}
+
+p {
+    font-size:16px;
+    line-height:24px;
+    font-weight:300;
+    margin-bottom:20px;
+}
+
+.lead {
+    font-size:20px;
+    line-height:28px;
+    font-weight:100;
+    letter-spacing:0.02em;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+
+a,
+a:hover,
+a:focus {
+    outline:none !important;
+    text-decoration:none;
+}
+
+a {
+    color:#F75443;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    color:#F75443;
+    text-decoration: underline;
+}
+
+a:focus,
+.btn:focus {
+    outline: none;
+}
+
+.color-bg a{
+    color:#fff;
+    text-decoration: underline;
+}
+
+.color-bg a:hover,
+.color-bg a:focus {
+    color:#fff;
+    text-decoration: none;
+}
+
+.primary {
+    color:#F75443;
+}
+
+/*----------------------
+---Main Layout Styles---
+------------------------*/
+.img-center{
+    margin:0 auto;
+}
+
+.padding-top-bottom {
+    padding:100px 0;
+}
+
+.padding-top {
+    padding:100px 0 0;
+}
+
+.margin-bottom{
+    margin-bottom: 40px;
+}
+
+.navbar {
+    margin:0;
+    border-radius:0;
+}
+
+.section-title{
+    position:relative;
+    margin-bottom:40px;
+    font-family: 'Raleway', sans-serif;
+    font-size:64px;
+    line-height:78px;
+    font-weight:100;
+    letter-spacing:0;
+    text-align:center;
+}
+
+.section-title:after{
+    display:block;
+    content:"";
+    width:100px;
+    height:1px;
+    position:absolute;
+    left:50%;
+    bottom:-15px;
+    margin-left:-50px;
+    background:#F75443;
+}
+
+.section-description {
+    text-align:center;
+    font-size:18px;
+    margin-bottom:60px;
+}
+
+.subsection-title{  
+    text-align:center;
+    margin-top:80px;
+}
+
+.subsection-description {
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.big-title{
+    position:relative;
+    margin-bottom:40px;
+    font-family: 'Raleway', sans-serif;
+    font-size:52px;
+    line-height:1.05em;
+    font-weight:100;
+    letter-spacing:0;
+}
+
+.big-title:after{
+    display:block;
+    content:"";
+    width:100px;
+    height:1px;
+    position:absolute;
+    left:0;
+    bottom:-20px;
+    background:#F75443;
+}
+
+.flexslider {
+    margin:0;
+    padding:0;
+    background:transparent;
+    border:none;
+    box-shadow:none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    z-index:1;
+}
+
+/*----------------
+----- Colors -----
+------------------*/
+
+.white-bg{
+    background:#fff;
+}
+
+.gray-bg{
+    background:#f3f3f3;
+}
+
+.color-bg{
+    background:#F75443;
+}
+
+.dark-bg{
+    background:#4E5961;
+}
+
+.light-typo {
+    color:#fff;
+}
+
+.color-bg.light-typo .section-title:after{
+    background:#fff;
+}
+
+.white-bg + .gray-bg,
+.gray-bg + .white-bg {
+    border-top:1px solid #e5e5e5;
+}
+
+.parallax-bg{
+    background-repeat:no-repeat;
+    background-position: 50% 0;
+    background-size:cover;
+	background-attachment:fixed;
+}
+
+.touch .parallax-bg{
+	background-attachment:scroll;
 }

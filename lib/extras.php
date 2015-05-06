@@ -130,3 +130,180 @@ function sage_paging_nav($before = '', $after = '') {
   }
   echo '</ul>'.$after."";
 }
+
+/**
+  * Adds Comment layout
+  */
+function sage_comments($comment, $args, $depth) {
+   $GLOBALS['comment'] = $comment; ?>
+    <li <?php comment_class('media'); ?> id="comment-<?php comment_ID(); ?>">
+      <div class="avatar">
+          <a href="#"><?=get_avatar( $comment, $size='75' ); ?></a>
+      </div><!-- /.avatar -->
+      
+      <div class="commentbody">
+          
+          <div class="author">
+            <?php printf('<h4>%s</h4>', get_comment_author_link()) ?>
+            <div class="meta">
+              <span class="date"><?=human_time_diff( get_comment_time('U'), current_time('timestamp') ) . ' ago'; ?></span>
+            </div><!-- /.meta -->
+          </div><!-- /.author -->
+          
+          <div class="message">
+            <?php if ($comment->comment_approved == '0') : ?>
+              <div class="alert-message success">
+                <p><?php _e('Your comment is awaiting moderation.','sage') ?></p>
+              </div>
+            <?php endif; ?>
+            
+            <?php comment_text() ?>
+            
+            <ul class="post-meta small">
+              <li class="reply"><?php comment_reply_link(array_merge( $args, array('depth' => $depth, 'max_depth' => $args['max_depth']))) ?></li>
+              <li><?php edit_comment_link(__('Edit','sage'),'<i class="fa fa-pencil-square-o"></i>') ?></li>
+              <li class="upvote"><a href="#">24 <i class="fa fa-thumbs-o-up"></i></a></li>
+            </ul><!-- /.meta -->
+          </div><!-- /.message -->
+          
+      </div><!-- /.commentbody -->
+    <!-- </li> is added by wordpress automatically -->
+<?php
+} // don't remove this bracket!
+
+// Display trackbacks/pings callback function
+function list_pings($comment, $args, $depth) {
+       $GLOBALS['comment'] = $comment;
+?>
+        <li id="comment-<?php comment_ID(); ?>"><i class="fa fa-share-alt"></i>&nbsp;<?php comment_author_link(); ?></li>
+<?php 
+}
+
+/**
+  * Creating a New Post Type
+  */
+add_action('init', __NAMESPACE__ . '\\portfolio_register');  
+   
+function portfolio_register() {  
+    $args = array(  
+      'label' => __('Portfolio', 'wedesign'),  
+      'singular_label' => __('Project', 'wedesign'),  
+      'public' => true,  
+      'show_ui' => true,  
+      'capability_type' => 'post',  
+      'hierarchical' => false,  
+      'rewrite' => true,  
+      'supports' => array('title', 'editor', 'thumbnail')  
+    );   
+    register_post_type( 'portfolio' , $args );  
+}
+
+/**
+  * Adding a Custom Taxonomy
+  */
+register_taxonomy("project-type", 
+  array("portfolio"), 
+  array(
+    "hierarchical" => true, 
+    "label" => "Project Types", 
+    "singular_label" => "Project Type", 
+    "rewrite" => true
+  )
+);
+
+// Add the Meta Box
+function add_custom_meta_box() {
+  add_meta_box(
+    'custom_meta_box', // $id
+    'Portfolio Extra Details', // $title 
+     __NAMESPACE__ . '\\show_custom_meta_box', // $callback
+    'portfolio', // $page
+    'normal', // $context
+    'high' // $priority
+    );
+}
+add_action('add_meta_boxes', __NAMESPACE__ . '\\add_custom_meta_box');  
+   
+// Field Array
+$prefix = 'sage_';
+$custom_meta_fields = array(
+  array(
+      'label'=> 'Client Name',
+      'desc'  => 'Fill in the Name of the client whos work is done.',
+      'id'    => $prefix.'client',
+      'type'  => 'text'
+  ),
+  array(
+      'label'=> 'Client Link',
+      'desc'  => 'Fill in the link to the clients work if any.',
+      'id'    => $prefix.'link',
+      'type'  => 'text'
+  )
+);
+
+// The Callback
+function show_custom_meta_box() {
+global $custom_meta_fields, $post;
+// Use nonce for verification
+echo '<input type="hidden" name="custom_meta_box_nonce" value="'.wp_create_nonce(basename(__FILE__)).'" />';
+     
+    // Begin the field table and loop
+    echo '<table class="form-table">';
+    foreach ($custom_meta_fields as $field) {
+        // get value of this field if it exists for this post
+        $meta = get_post_meta($post->ID, $field['id'], true);
+        // begin a table row with
+        echo '<tr>
+          <th><label for="'.$field['id'].'">'.$field['label'].'</label></th>
+          <td>';
+          switch($field['type']) {
+           // case items will go here
+            // text
+            case 'text':
+                echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />
+                    <br /><span class="description">'.$field['desc'].'</span>';
+            break;
+            // text
+            case 'text':
+                echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />
+                    <br /><span class="description">'.$field['desc'].'</span>';
+            break;
+          } //end switch
+        echo '</td></tr>';
+    } // end foreach
+    echo '</table>'; // end table
+}
+
+// Save the Data
+function save_custom_meta($post_id) {
+    global $custom_meta_fields;
+  
+    // verify nonce
+    if (!wp_verify_nonce($_POST['custom_meta_box_nonce'], basename(__FILE__))) 
+      return $post_id;
+
+    // check autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+      return $post_id;
+
+    // check permissions
+    if ('page' == $_POST['post_type']) {
+      if (!current_user_can('edit_page', $post_id))
+          return $post_id;
+      } elseif (!current_user_can('edit_post', $post_id)) {
+      return $post_id;
+    }
+     
+    // loop through fields and save the data
+    foreach ($custom_meta_fields as $field) {
+      $old = get_post_meta($post_id, $field['id'], true);
+      $new = $_POST[$field['id']];
+      if ($new && $new != $old) {
+          update_post_meta($post_id, $field['id'], $new);
+      } elseif ('' == $new && $old) {
+          delete_post_meta($post_id, $field['id'], $old);
+      }
+    } // end foreach
+}
+add_action('save_post', __NAMESPACE__ . '\\save_custom_meta');
+
