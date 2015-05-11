@@ -48,7 +48,7 @@ query_posts('post_type=portfolio&posts_per_page=6');
                         <!--700x400-->              
                     </div>
                 </div> <!-- // end browser -->
-                <h3 class="text-center">
+                <h3 class="text-center post-title">
                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                 </h3>
                 

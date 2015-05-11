@@ -10,20 +10,16 @@
 <header id="home" class="parallax-bg" data-parallax-background="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/header-bg.png" data-stellar-background-ratio=".5">
   
   <div class="header-content">
-  
-    <div class="flexslider header-slider" data-speed = '3000'>
     
       <ul class="slides">
-      
-        <li><h1 class="bordered-text">Welcome to <span class="primary">Quattro</span> Studio</h1></li>
-        <li><h1 class="bordered-text">We are <span class="primary">Young</span></h1></li>
-        <li><h1 class="bordered-text">We are <span class="primary">Passionate</span></h1></li>
-        <li><h1 class="bordered-text">We have <span class="primary">Fresh</span> Ideas</h1></li>
-        
+        <li>
+          <h1 class="scrollimation fade-down d1"><span class="primary">I am Oscar Olotu</span></h1>
+          <h2 class="scrollimation fade-down d3"><span class="primary">Designer, Developer, Dreamer</span></h2>
+        </li>
       </ul>
-      
-    </div><!--End home-slider -->
-      
+
+    <!--<img class="" src="<?= esc_url( get_template_directory_uri() ); ?>/dist/images/header-img.png" alt=""/>-->
+
     <a class="scroll-button scrollto" href="#services"><i class="fa fa-angle-down"></i></a>  
       
   </div>
@@ -37,7 +33,7 @@
   
   <div class="header-content">
   
-    <h1 class="bordered-text">I <span class="primary">Love</span> Writing</h1>
+    <h1 class="scrollimation fade-down d1">I Love Writing</h1>
     <?php //get_template_part('templates/page', 'header'); ?>
     
   </div>

@@ -23,7 +23,7 @@
                   <h3>About the author</h3>
                   <p><?php the_author_meta( 'description' ); ?>.</p>
                   <ul class="post-meta small">
-                    <li class="author-posts"><a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>">All posts by <?php the_author_meta('first_name'); ?></a></li>
+                    <!--<li class="author-posts"><a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>">All posts by <?php the_author_meta('first_name'); ?></a></li>-->
                   </ul><!-- /.meta -->
                 </figcaption>
                   

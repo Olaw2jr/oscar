@@ -1,40 +1,37 @@
-/*-----------------------
----- Preloader Styles ----
--------------------------*/
-#page-loader{
-    position: fixed;
-    top:0;
-    left:0;
+/*- Preloader Styles -*/
+#page-loader {
+    background: @white-color;
     bottom: 0;
-    right: 0;
-    background: #fff;
-    z-index: 99999;
-}
-
-#page-loader .page-loader-gif{
-    display: block;
-    width:100%;
-    height:64px;
-    position: absolute;
-    top:50%;
     left:0;
-    margin:-32px 0 0;
-    font-size:21px;
-    line-height:58px;
-    font-family:Raleway;
-    font-weight:400;
-    text-align: center;
-    color:#aaa;
-    color:rgba(0,0,0,0.2);
-    background: url('../images/preloader.gif') 50% 0 no-repeat;    
+    position: fixed;
+    right: 0;
+    top:0;
+    z-index: 99999;
+    .page-loader-gif {
+        background: url('../images/preloader.gif') 50% 0 no-repeat;
+        color:@color4;
+        color:rgba(0,0,0,0.2);
+        display: block;
+        font-family:Raleway;
+        font-size:21px;
+        font-weight:400;
+        height:64px;
+        left:0;
+        line-height:58px;
+        margin:-32px 0 0;
+        position: absolute;
+        text-align: center;
+        top:50%;
+        width:@width10;
+    }
 }
 
-/*----------------------
-----Navigation Styles---
-------------------------*/
-.sticky-wrapper{
-    background:#F3F3F3;
+/*-Navigation Styles-*/
+.sticky-wrapper {
+    background:@white-color;
 }
+
+
 
 #main-nav{
     position:static;
@@ -290,7 +287,6 @@
     bottom:30px;
     left:50%;
     margin-left:-35px;
-    color:#fff !important;
     padding:20px;
     font-size:48px;
     -webkit-animation: moving 2s ease-out infinite;
